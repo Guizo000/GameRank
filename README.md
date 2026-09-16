@@ -14,9 +14,10 @@ GameRank is a work-in-progress full-stack project created as a hands-on learning
 - [x] **Authentication:** Implement login and register system with database persistence.
 - [x] **Basic UI:** Build basic UI for the authentication system.
 - [x] **Persistence:** Enhance authentication with JWT (JSON Web Tokens) to maintain persistent user sessions.
-- [ ] **Automated Testing:** Integrate xUnit to build unit and integration tests for core business logic and API endpoints.
-- [ ] **Improve Authentication:** Enhance JWT authentication security by implementing refresh tokens.
+- [ ] **Content**: Implement the system for adding and listing games.
+- [ ] **Automated Testing:** Integrate xUnit to build unit tests for core logic and API endpoints.
 - [ ] **Role-Based Authorization:** Restrict sensitive endpoints and management features based on user privilege levels.
+- [ ] **Improve Authentication:** Enhance JWT authentication security by implementing refresh tokens.
 
 ---
 
