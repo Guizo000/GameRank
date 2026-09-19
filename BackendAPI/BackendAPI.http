@@ -20,3 +20,20 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{BackendAPI_HostAddress}}/api/game/games
+Content-Type: application/json
+
+{
+  "name": "CS2",
+  "genre": "Ação",
+  "description": "Jogo de tiro em primeira pessoa online",
+  "releaseDate": "2025-01-01",
+  "image": "https://url"
+}
+
+###
+
+GET {{BackendAPI_HostAddress}}/api/game/games
+
+###
