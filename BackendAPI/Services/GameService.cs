@@ -3,6 +3,7 @@ using BackendAPI.Dtos;
 using BackendAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BackendAPI.Services
 {
@@ -78,6 +79,26 @@ namespace BackendAPI.Services
                     Image = game.Image
                 })
                 .FirstOrDefaultAsync(g => g.Id == id);
+        }
+
+        public async Task<bool> UpdateGameAsync(UpdateGameRequestDto updateGameRequestDto)
+        {
+            Game? game = await _context.Games.FindAsync(updateGameRequestDto.Id);
+
+            if(game is null)
+            {
+                return false;
+            }
+
+            game.Name = updateGameRequestDto.Name;
+            game.Genre = updateGameRequestDto.Genre;
+            game.Description = updateGameRequestDto.Description;
+            game.ReleaseDate = updateGameRequestDto.ReleaseDate;
+            game.Image = updateGameRequestDto.Image;
+
+            await _context.SaveChangesAsync();
+            
+            return true;
         }
     }
 }

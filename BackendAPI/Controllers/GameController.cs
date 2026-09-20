@@ -16,7 +16,7 @@ namespace BackendAPI.Controllers
         {
             GameDetailDto? returnedGame = await _gameService.GetGameAsync(id);
 
-            if(returnedGame == null)
+            if (returnedGame == null)
             {
                 return NotFound(new { message = "Game not found" });
             }
@@ -27,7 +27,7 @@ namespace BackendAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<GameSummaryDto>>> GetAllGames()
         {
-            IReadOnlyList<GameSummaryDto> allGames = await _gameService.GetAllGamesAsync(); 
+            IReadOnlyList<GameSummaryDto> allGames = await _gameService.GetAllGamesAsync();
 
             return Ok(allGames);
         }
@@ -45,12 +45,31 @@ namespace BackendAPI.Controllers
         {
             bool isDeleted = await _gameService.DeleteGameAsync(id);
 
-            if(!isDeleted)
+            if (!isDeleted)
             {
                 return NotFound(new { message = "Game not found" });
             }
 
             return NoContent();
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateGame(int id, UpdateGameRequestDto updateGameRequestDto)
+        {
+            if (id != updateGameRequestDto.Id)
+            {
+                return BadRequest(new { message = "Route ID does not match request body ID." });
+            }
+
+            bool isUpdated = await _gameService.UpdateGameAsync(updateGameRequestDto);
+
+            if(!isUpdated)
+            {
+                return NotFound(new { message = "Game not found" });
+            }
+
+            return NoContent();
+        }
+
     }
 }

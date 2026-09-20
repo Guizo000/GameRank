@@ -9,5 +9,6 @@ namespace BackendAPI.Services
         Task<GameDetailDto> CreateGameAsync(CreateGameRequestDto createGameRequest);
         Task<GameDetailDto?> GetGameAsync(int id);
         Task<bool> DeleteGameAsync(int id);
+        Task<bool> UpdateGameAsync(UpdateGameRequestDto gameDetail);
     }
 }
