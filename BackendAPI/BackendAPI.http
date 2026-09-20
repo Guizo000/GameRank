@@ -44,7 +44,12 @@ GET {{BackendAPI_HostAddress}}/api/game
 
 ###
 
-@id=1
+@id=2
 GET {{BackendAPI_HostAddress}}/api/game/{{id}}
+
+###
+
+@id=2
+DELETE {{BackendAPI_HostAddress}}/api/game/{{id}}
 
 ###

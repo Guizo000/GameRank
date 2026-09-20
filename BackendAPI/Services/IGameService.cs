@@ -8,6 +8,6 @@ namespace BackendAPI.Services
         Task<IReadOnlyList<GameSummaryDto>> GetAllGamesAsync();
         Task<GameDetailDto> CreateGameAsync(CreateGameRequestDto createGameRequest);
         Task<GameDetailDto?> GetGameAsync(int id);
-
+        Task<bool> DeleteGameAsync(int id);
     }
 }

@@ -1,6 +1,7 @@
 using BackendAPI.Data;
 using BackendAPI.Dtos;
 using BackendAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BackendAPI.Services
@@ -31,6 +32,21 @@ namespace BackendAPI.Services
                 Image = game.Image
             };
 
+        }
+
+        public async Task<bool> DeleteGameAsync(int id)
+        {
+            Game? gameToBeDeleted = await _context.Games.FindAsync(id);
+
+            if(gameToBeDeleted is null)
+            {
+                return false;
+            }
+
+            _context.Games.Remove(gameToBeDeleted);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<IReadOnlyList<GameSummaryDto>> GetAllGamesAsync()
