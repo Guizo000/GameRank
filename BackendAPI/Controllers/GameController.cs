@@ -39,5 +39,18 @@ namespace BackendAPI.Controllers
 
             return CreatedAtAction(nameof(GetGame), new { id = createdGame.Id }, createdGame);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteGame(int id)
+        {
+            bool isDeleted = await _gameService.DeleteGameAsync(id);
+
+            if(!isDeleted)
+            {
+                return NotFound(new { message = "Game not found" });
+            }
+
+            return NoContent();
+        }
     }
 }
