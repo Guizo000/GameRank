@@ -23,6 +23,28 @@ namespace BackendAPI.Dtos
         public string? Image { get; set; }
     }
 
+    public class UpdateGameRequestDto
+    {
+        public int Id { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [MaxLength(128)]
+        public string Name { get; set; } = string.Empty;
+
+        [Required(AllowEmptyStrings = false)]
+        [MaxLength(64)]
+        public string Genre { get; set; } = string.Empty;
+
+        [MaxLength(1024)]
+        public string? Description { get; set; }
+
+        public DateOnly? ReleaseDate { get; set; }
+
+        [Url]
+        [MaxLength(2048)]
+        public string? Image { get; set; }
+    }
+
     public class GameSummaryDto
     {
         public int Id { get; set; }

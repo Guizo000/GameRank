@@ -32,8 +32,8 @@ Content-Type: application/json
 
 {
   "name": "CS2",
-  "genre": "Ação",
-  "description": "Jogo de tiro em primeira pessoa online",
+  "genre": "Action",
+  "description": "FPS (First Person Shooter) online game",
   "releaseDate": "2025-01-01",
   "image": "https://url"
 }
@@ -44,12 +44,24 @@ GET {{BackendAPI_HostAddress}}/api/game
 
 ###
 
-@id=2
-GET {{BackendAPI_HostAddress}}/api/game/{{id}}
+GET {{BackendAPI_HostAddress}}/api/game/4
 
 ###
 
-@id=2
-DELETE {{BackendAPI_HostAddress}}/api/game/{{id}}
+DELETE {{BackendAPI_HostAddress}}/api/game/4
+
+###
+
+PUT {{BackendAPI_HostAddress}}/api/game/4
+Content-Type: application/json
+
+{
+  "id": "4",
+  "name": "CS2",
+  "genre": "Action",
+  "description": "FPS (First Person Shooter) online game",
+  "releaseDate": "2025-01-01",
+  "image": "https://url"
+}
 
 ###
