@@ -9,22 +9,35 @@ namespace BackendAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GameController(IGameService gameService) : ControllerBase
+    public class GameController(IGameService _gameService) : ControllerBase
     {
-        [HttpGet("games")]
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GameDetailDto?>> GetGame(int id)
+        {
+            GameDetailDto? returnedGame = await _gameService.GetGameAsync(id);
+
+            if(returnedGame == null)
+            {
+                return NotFound(new { message = "Game not found" });
+            }
+
+            return Ok(returnedGame);
+        }
+
+        [HttpGet]
         public async Task<ActionResult<IReadOnlyList<GameSummaryDto>>> GetAllGames()
         {
-            IReadOnlyList<GameSummaryDto> allGames = await gameService.GetAllGamesAsync(); 
+            IReadOnlyList<GameSummaryDto> allGames = await _gameService.GetAllGamesAsync(); 
 
             return Ok(allGames);
         }
 
-        [HttpPost("games")]
+        [HttpPost]
         public async Task<IActionResult> CreateGame([FromBody] CreateGameRequestDto gameDto)
         {
-            GameDetailDto createdGame = await gameService.CreateGameAsync(gameDto);
+            GameDetailDto createdGame = await _gameService.CreateGameAsync(gameDto);
 
-            return StatusCode(201, createdGame);
+            return CreatedAtAction(nameof(GetGame), new { id = createdGame.Id }, createdGame);
         }
     }
 }

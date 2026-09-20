@@ -2,7 +2,6 @@ using BackendAPI.Data;
 using BackendAPI.Dtos;
 using BackendAPI.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
 
 namespace BackendAPI.Services
 {
@@ -47,6 +46,22 @@ namespace BackendAPI.Services
                     Image = game.Image
                 })
                 .ToListAsync();         
+        }
+
+        public async Task<GameDetailDto?> GetGameAsync(int id)
+        {
+            return await _context.Games
+                .AsNoTracking()
+                .Select(game => new GameDetailDto
+                {
+                    Id = game.Id,
+                    Name = game.Name,
+                    Genre = game.Genre,
+                    Description = game.Description,
+                    ReleaseDate = game.ReleaseDate,
+                    Image = game.Image
+                })
+                .FirstOrDefaultAsync(g => g.Id == id);
         }
     }
 }
