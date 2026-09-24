@@ -32,6 +32,7 @@ namespace BackendAPI.Controllers
             return Ok(allGames);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateGame([FromBody] CreateGameRequestDto gameDto)
         {
@@ -40,6 +41,7 @@ namespace BackendAPI.Controllers
             return CreatedAtAction(nameof(GetGame), new { id = createdGame.Id }, createdGame);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGame(int id)
         {
@@ -53,6 +55,7 @@ namespace BackendAPI.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateGame(int id, UpdateGameRequestDto updateGameRequestDto)
         {

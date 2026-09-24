@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Metadata.Ecma335;
 
 namespace BackendAPI.Models
 {
@@ -20,5 +21,9 @@ namespace BackendAPI.Models
         [Required]
         [MaxLength(512)]
         public string HashedPassword { get; set; } = string.Empty;
+
+        [Required]
+        [MaxLength(64)]
+        public string Role { get; set; } = string.Empty;
     }
 }
