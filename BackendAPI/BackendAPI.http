@@ -1,9 +1,10 @@
 @BackendAPI_HostAddress = https://localhost:7242
 
-###-----------------###
-### User Endpoints ###
-###-----------------###
+# ==============================================================================
+# USER ENDPOINTS
+# ==============================================================================
 
+# @name loginRequest
 POST {{BackendAPI_HostAddress}}/api/auth/login
 Content-Type: application/json
 
@@ -12,7 +13,7 @@ Content-Type: application/json
   "password": "VeryGoodPassword"
 }
 
-### 
+###
 
 POST {{BackendAPI_HostAddress}}/api/auth/register
 Content-Type: application/json
@@ -23,40 +24,25 @@ Content-Type: application/json
   "password": "VeryGoodPassword"
 }
 
-###-----------------###
-### Games Endpoints ###
-###-----------------###
-
-POST {{BackendAPI_HostAddress}}/api/game
-Content-Type: application/json
-
-{
-  "name": "CS2",
-  "genre": "Action",
-  "description": "FPS (First Person Shooter) online game",
-  "releaseDate": "2025-01-01",
-  "image": "https://url"
-}
-
 ###
+
+# ==============================================================================
+# GAMES ENDPOINTS
+# ==============================================================================
 
 GET {{BackendAPI_HostAddress}}/api/game
 
 ###
 
-GET {{BackendAPI_HostAddress}}/api/game/4
+GET {{BackendAPI_HostAddress}}/api/game/5
 
 ###
 
-DELETE {{BackendAPI_HostAddress}}/api/game/4
-
-###
-
-PUT {{BackendAPI_HostAddress}}/api/game/4
+POST {{BackendAPI_HostAddress}}/api/game
+Authorization: Bearer {{loginRequest.response.body.$.token}}
 Content-Type: application/json
 
 {
-  "id": "4",
   "name": "CS2",
   "genre": "Action",
   "description": "FPS (First Person Shooter) online game",
@@ -65,3 +51,21 @@ Content-Type: application/json
 }
 
 ###
+
+DELETE {{BackendAPI_HostAddress}}/api/game/5
+Authorization: Bearer {{loginRequest.response.body.$.token}}
+
+###
+
+PUT {{BackendAPI_HostAddress}}/api/game/5
+Authorization: Bearer {{loginRequest.response.body.$.token}}
+Content-Type: application/json
+
+{
+  "id": "5",
+  "name": "CS:GO",
+  "genre": "Action",
+  "description": "FPS (First Person Shooter) online game",
+  "releaseDate": "2025-01-01",
+  "image": "https://url"
+}

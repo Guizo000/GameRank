@@ -12,7 +12,7 @@ namespace BackendAPI.Controllers
     {
 
         [HttpPost("register")]
-        public async Task<ActionResult<string>> Register([FromBody] RegisterRequestDto registerRequest)
+        public async Task<IActionResult> Register([FromBody] RegisterRequestDto registerRequest)
         {
             var token = await authService.RegisterAsync(registerRequest);
             
@@ -25,7 +25,7 @@ namespace BackendAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login([FromBody] LoginRequestDto loginRequest)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequest)
         {
             var token = await authService.LoginAsync(loginRequest);
 

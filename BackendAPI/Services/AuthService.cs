@@ -24,7 +24,8 @@ namespace BackendAPI.Services
             User user = new User
             {
                 Email = registerRequestDto.Email,
-                Name = registerRequestDto.Name
+                Name = registerRequestDto.Name,
+                Role = "User"
             };
 
             user.HashedPassword = _passwordHasher.HashPassword(user, registerRequestDto.Password);
@@ -65,7 +66,8 @@ namespace BackendAPI.Services
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email)
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Role, user.Role)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetValue<string>("AppSettings:Token")!));
