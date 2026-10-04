@@ -76,7 +76,7 @@ export default function Register()
 
             const data = await response.json();   
             const decodedJWT = getDecodedJWT(data.token);
-            localStorage.setItem('token', decodedJWT); 
+            localStorage.setItem('token', data.token); 
 
             alert("Register succesful!")
             
