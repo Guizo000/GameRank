@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router"
+import { getDecodedJWT } from "../helpers/auth";
 import './style/Login.css'
 
 export default function Login()
@@ -64,12 +65,20 @@ export default function Login()
                 throw new Error(errorMessage);
             }
 
-            const data = await response.json();
-            localStorage.setItem('token', data.token);    
+            const data = await response.json();   
+            const decodedJWT = getDecodedJWT(data.token);
+            localStorage.setItem('token', decodedJWT); 
 
             alert("Login succesful!")
-
-            navigate("/home");
+            if(decodedJWT.role === "Admin")
+            {
+                navigate("/admin");
+            }
+            else if(decodedJWT.role === "User")
+            {
+                //To-Do
+            }
+            
 
         }
         catch(err)

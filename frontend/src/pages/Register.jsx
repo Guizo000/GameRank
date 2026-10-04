@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router";
+import { getDecodedJWT } from "../helpers/auth.js"
 import './style/Register.css'; 
 
 export default function Register()
@@ -73,12 +74,14 @@ export default function Register()
                 throw new Error(errorMessage);
             }
 
-            const data = await response.json();
-            localStorage.setItem('token', data.token);    
+            const data = await response.json();   
+            const decodedJWT = getDecodedJWT(data.token);
+            localStorage.setItem('token', decodedJWT); 
 
             alert("Register succesful!")
-
-            navigate("/home");
+            
+            //navigate("");
+            
         } 
         catch(err)
         {
