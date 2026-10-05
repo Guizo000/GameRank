@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { getDecodedJWT } from "../helpers/auth";
+import AddGameForm from "../components/AddGameForm";
 import "./style/Admin.css"
+
 
 export default function Admin() 
 {
@@ -14,7 +16,7 @@ export default function Admin()
         {
             case "Add":
                 return (
-                    <p>Add</p>
+                    <AddGameForm token={rawToken}/>
                 );
 
             case "Delete":
