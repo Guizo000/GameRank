@@ -38,6 +38,11 @@ GET {{BackendAPI_HostAddress}}/api/game/5
 
 ###
 
+@name=Expedition 33
+GET {{BackendAPI_HostAddress}}/api/game/search?name={{name}}
+
+###
+
 POST {{BackendAPI_HostAddress}}/api/game
 Authorization: Bearer {{loginRequest.response.body.$.token}}
 Content-Type: application/json
@@ -69,3 +74,9 @@ Content-Type: application/json
   "releaseDate": "2025-01-01",
   "image": "https://url"
 }
+
+###
+
+
+
+

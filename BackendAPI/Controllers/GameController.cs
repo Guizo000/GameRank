@@ -24,6 +24,19 @@ namespace BackendAPI.Controllers
             return Ok(returnedGame);
         }
 
+        [HttpGet("search")]
+        public async Task<ActionResult<IReadOnlyList<GameSummaryDto>>> GetQueryGames([FromQuery] string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return Ok(Array.Empty<GameSummaryDto>());
+            }
+
+            IReadOnlyList<GameSummaryDto> queryGames = await _gameService.GetQueryGamesAsync(name);
+
+            return Ok(queryGames);
+        }
+
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<GameSummaryDto>>> GetAllGames()
         {

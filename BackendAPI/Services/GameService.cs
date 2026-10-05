@@ -81,6 +81,22 @@ namespace BackendAPI.Services
                 .FirstOrDefaultAsync(g => g.Id == id);
         }
 
+        public async Task<IReadOnlyList<GameSummaryDto>> GetQueryGamesAsync(string name)
+        {
+            return await _context.Games
+                .AsNoTracking()
+                .Where(game => game.Name.Contains(name))
+                .Select(game => new GameSummaryDto
+                {
+                    Id = game.Id,
+                    Name = game.Name,
+                    Genre = game.Genre,
+                    ReleaseDate = game.ReleaseDate,
+                    Image = game.Image
+                })
+                .ToListAsync();
+        }
+
         public async Task<bool> UpdateGameAsync(UpdateGameRequestDto updateGameRequestDto)
         {
             Game? game = await _context.Games.FindAsync(updateGameRequestDto.Id);
