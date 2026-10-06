@@ -9,6 +9,16 @@ export function addGame(gameData, token)
     });
 }
 
+export function updateGame(gameData, token)
+{
+    console.log(gameData.id)
+    request(`/game/${gameData.id}`, {
+        method: "PUT",
+        body: gameData,
+        token
+    });
+}
+
 export function searchGame(query, token)
 {
     const searchParams = new URLSearchParams({
@@ -20,3 +30,12 @@ export function searchGame(query, token)
         token
     })
 }
+
+export function searchGameById(id, token)
+{
+    return request(`/game/${id}`, {
+        method: "GET",
+        token
+    })
+}
+

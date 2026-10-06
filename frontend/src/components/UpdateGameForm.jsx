@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { searchGame } from "../services/games"
 
-export default function UpdateGameForm({ token }) {
+export default function UpdateGameForm({ token, onSelectGame }) {
     const [query, setQuery] = useState("")
     const [results, setResults] = useState([])
 
@@ -23,7 +23,6 @@ export default function UpdateGameForm({ token }) {
             try
             {
                 const response = await searchGame(query, token);
-                console.log(response);
                 setResults(response);
             }
             catch (err)
@@ -38,7 +37,7 @@ export default function UpdateGameForm({ token }) {
 
         return () => clearTimeout(timeout);
         
-    }, [query])
+    }, [query, token])
 
     return (
         <div>
@@ -55,11 +54,10 @@ export default function UpdateGameForm({ token }) {
             <div>
                 {
                     results.map(game => (
-                        <button key={game.id}>{game.name}</button>
+                        <button key={game.id} onClick={() => onSelectGame(game)}>{game.name}</button>
                     ))
                 }
             </div>
-
         </div>
     )
 }
