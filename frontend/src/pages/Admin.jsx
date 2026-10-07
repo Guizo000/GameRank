@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import { getDecodedJWT } from "../helpers/auth";
+import { deleteGameById } from "../services/games";
 import GameForm from "../components/GameForm";
-import GameSearch from "../components/GameSearch";
+import GameSearch from "../components/GameSearch"
 import "./style/Admin.css"
 
 
@@ -17,28 +18,52 @@ export default function Admin()
         setSelectedGame(game)
     }
 
+    const handleDeleteGame = async (game) => {
+        const confirmed = window.confirm(`Are you sure you want to delete "${game.name}"?`);
+  
+        if (confirmed) {
+            try
+            {
+                await deleteGameById(game.id, rawToken);
+                alert("Game deleted with success!")
+            }
+            catch(err)
+            {
+                console.log(err.message);
+            }
+        }
+    }
+
     const renderActionContent = () => {
         switch (action) 
         {
             case "Add":
                 return (
-                    <GameForm token={rawToken} mode="add"/>
+                    <div className="admin__content">
+                        <GameForm token={rawToken} mode="add"/>
+                    </div>
                 );
 
             case "Delete":
                 return (
-                    <p>Delete</p>
+                    <div className="admin__content">
+                        <h2>Delete Game</h2>
+                        <GameSearch token={rawToken} onSelectGame={handleDeleteGame}/>
+                    </div>
                 );
 
             case "Update":
                 return (
                     selectedGame ? 
-                    <div>
+                    <div className="admin__content">
                         <GameForm token={rawToken} gameId={selectedGame.id}/>
                         <button onClick={() => setSelectedGame(null)}>Back</button>
                     </div> 
                      :
-                    <GameSearch token={rawToken} onSelectGame={handleSelectGame}/>
+                    <div className="admin__content">
+                        <h2>Update Game</h2>
+                        <GameSearch token={rawToken} onSelectGame={handleSelectGame}/>
+                    </div>
                 );
 
             default:
@@ -56,9 +81,7 @@ export default function Admin()
                 <button className="admin__btn" onClick={() => { setAction("Update"); setSelectedGame(null); }}>Update</button>
             </div>
 
-            <div className="admin__content">
-                {renderActionContent()}
-            </div>     
+            {renderActionContent()}    
         </div>
     )
 }

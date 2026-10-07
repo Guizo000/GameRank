@@ -2,7 +2,7 @@ import request from "./client.js"
 
 export function addGame(gameData, token)
 {
-    request("/game", {
+    return request("/game", {
         method: "POST",
         body: gameData,
         token
@@ -12,7 +12,7 @@ export function addGame(gameData, token)
 export function updateGame(gameData, token)
 {
     console.log(gameData.id)
-    request(`/game/${gameData.id}`, {
+    return request(`/game/${gameData.id}`, {
         method: "PUT",
         body: gameData,
         token
@@ -39,3 +39,10 @@ export function searchGameById(id, token)
     })
 }
 
+export function deleteGameById(id, token)
+{
+    return request(`/game/${id}`, {
+        method: "DELETE",
+        token
+    });
+}
