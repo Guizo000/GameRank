@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { getDecodedJWT } from "../helpers/auth";
-import AddGameForm from "../components/AddGameForm";
-import UpdateGameForm from "../components/UpdateGameForm";
+import GameForm from "../components/GameForm";
+import GameSearch from "../components/GameSearch";
 import "./style/Admin.css"
 
 
@@ -22,7 +22,7 @@ export default function Admin()
         {
             case "Add":
                 return (
-                    <AddGameForm token={rawToken} mode="add"/>
+                    <GameForm token={rawToken} mode="add"/>
                 );
 
             case "Delete":
@@ -34,11 +34,11 @@ export default function Admin()
                 return (
                     selectedGame ? 
                     <div>
-                        <AddGameForm token={rawToken} gameId={selectedGame.id}/>
+                        <GameForm token={rawToken} gameId={selectedGame.id}/>
                         <button onClick={() => setSelectedGame(null)}>Back</button>
                     </div> 
                      :
-                    <UpdateGameForm token={rawToken} onSelectGame={handleSelectGame}/>
+                    <GameSearch token={rawToken} onSelectGame={handleSelectGame}/>
                 );
 
             default:
