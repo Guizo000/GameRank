@@ -1,25 +1,14 @@
 # GameRank 🎮
 
-> A full-stack web application built to explore and rate video games, designed to deepen back-end expertise using modern **.NET** standards, robust security practices, and automated testing.
+> A full-stack web application built to explore and rate video games, designed to deepen back and front-end expertise
 
----
+</br>
 
 ## 📌 Project Overview
 
-GameRank is a work-in-progress full-stack project created as a hands-on learning environment to refine core web development skills. While building a practical platform for managing and ranking video games, the primary technical focus is on mastering solid back-end architecture, user security, and test-driven reliability.
+GameRank is a work-in-progress full-stack project created as a hands-on learning environment to refine core web development skills. While building a practical platform for managing and ranking video games, the primary technical focus is on mastering solid back and front-end architecture, user security, and test-driven reliability.
 
----
-
-## 🎯 Current Development Goals
-- [x] **Authentication:** Implement login and register system with database persistence.
-- [x] **Basic UI:** Build basic UI for the authentication system.
-- [x] **Persistence:** Enhance authentication with JWT (JSON Web Tokens) to maintain persistent user sessions.
-- [ ] **Content**: Implement the system for adding and listing games.
-- [ ] **Automated Testing:** Integrate xUnit to build unit tests for core logic and API endpoints.
-- [ ] **Role-Based Authorization:** Restrict sensitive endpoints and management features based on user privilege levels.
-- [ ] **Improve Authentication:** Enhance JWT authentication security by implementing refresh tokens.
-
----
+</br>
 
 ## 🛠️ Tech Stack
 
@@ -30,9 +19,9 @@ GameRank is a work-in-progress full-stack project created as a hands-on learning
 * **Database:** Entity Framework Core (SQL Server LocalDB / EF Core Migrations)
 
 ### Front-End
-* **Framework / Build Tool:** React + Vite (JavaScript)
-
----
+* **Framework / Build Tool:** React + Vite (JavaScript
+  
+</br>
 
 ## 🚀 Getting Started
 
@@ -87,12 +76,8 @@ GameRank is a work-in-progress full-stack project created as a hands-on learning
     2. ```npm install```
   
     3. ```npm run dev```
-   
-   
-   
 
----
-
+</br>
 
 ## 📝 License
 
