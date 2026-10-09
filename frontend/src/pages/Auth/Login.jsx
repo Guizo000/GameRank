@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router"
-import { getDecodedJWT } from "../helpers/auth";
-import './style/Login.css'
+import { getDecodedJWT } from "../../helpers/auth";
+import styles from './Auth.module.css'
+import clsx from "clsx";
 
 export default function Login()
 {
@@ -94,16 +95,16 @@ export default function Login()
     };
 
     return(
-        <div className="login">
-            {error && <div className="login__error">{error}</div>}
+        <div className="center full-height gap6">
+            {error && <div className={clsx("center", "error-container")}>{error}</div>}
 
-            <form className="login__form" onSubmit={handleLogin} noValidate>
-                <h2 className="login__title">Welcome Back</h2>
+            <form className={clsx("center container gap6", styles.authForm)} onSubmit={handleLogin} noValidate>
+                <h2 className="title">Welcome Back</h2>
 
-                <div className="login__field">
-                    <label className="login__label" htmlFor="email">Email:</label>
+                <div className="center input-container gap1">
+                    <label className={clsx("text", styles.authLabel)} htmlFor="email">Email:</label>
                     <input 
-                        className="login__input"
+                        className="input"
                         id="email"
                         type="email"
                         placeholder="Insert your email"
@@ -113,10 +114,10 @@ export default function Login()
                     />
                 </div>
 
-                <div className="login__field">
-                    <label className="login__label" htmlFor="password">Password:</label>
+                <div className="center input-container gap1">
+                    <label className={clsx("text", styles.authLabel)} htmlFor="password">Password:</label>
                     <input 
-                        className="login__input"
+                        className="input"
                         id="password"
                         type="password"
                         placeholder="Insert your password"
@@ -126,12 +127,12 @@ export default function Login()
                     />
                 </div>
 
-                <button className="login__submit" disabled={isLoading}>
+                <button className="button" disabled={isLoading}>
                     {isLoading ? "Logging in" : "Log in"}
                 </button>
 
-                <p className="login__switch">
-                    Doesn't have an account? <Link to="/register" className="login__link">Register</Link>
+                <p className="text">
+                    Doesn't have an account? <Link to="/register" className="link">Register</Link>
                 </p>
 
             </form>         

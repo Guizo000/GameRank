@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
-import { searchGame } from "../services/games"
+import { searchGame } from "../../services/games"
+import styles from "./Game.module.css"
+import clsx from "clsx";
 
 export default function UpdateGameForm({ token, onSelectGame }) {
     const [query, setQuery] = useState("")
@@ -40,21 +42,24 @@ export default function UpdateGameForm({ token, onSelectGame }) {
     }, [query, token])
 
     return (
-        <div>
+        <div className="center">
             <input
+                className="input margin4"
                 type="search"
                 value={query}
                 placeholder="Search the Game"
                 onChange={(e) => setQuery(e.target.value)}
             />
 
-            {error && <p>{error}</p>}            
-            {isLoading && <p>Loading...</p>}
+            {error && <div className="center error-container">{error}</div>}            
+            {isLoading && <p className="text">Loading...</p>}
 
-            <div>
+            <div className="center gap2">
                 {
                     results.map(game => (
-                        <button key={game.id} onClick={() => onSelectGame(game)}>{game.name}</button>
+                        <button className={clsx("button", styles.game)} key={game.id} onClick={() => onSelectGame(game)}>
+                            {game.name}
+                        </button>
                     ))
                 }
             </div>

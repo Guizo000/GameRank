@@ -1,3 +1,7 @@
+@import './variables.css';
+@import './components.css';
+@import './utilities.css';
+ 
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +9,7 @@
 }
 
 button {
-    color: none;
     border: none;
 }
+
+

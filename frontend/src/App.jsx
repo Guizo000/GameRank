@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router';
-import Login from './pages/Login.jsx';
-import Register from './pages/Register.jsx';
-import Admin from './pages/Admin.jsx';
+import Login from './pages/Auth/Login.jsx';
+import Register from './pages/Auth/Register.jsx';
+import Admin from './pages/Admin/Admin.jsx';
 
 export default function App() {
   return (

@@ -1,0 +1,60 @@
+.container {
+    background-color: var(--blue5);
+    border: 1px solid var(--blue3) ;   
+    border-radius: var(--radius-lg);
+    width: fit-content;
+    height: fit-content;
+    padding: var(--space-4);
+
+}
+
+.error-container {
+    background-color: var(--red5);
+    color: var(--red0);
+    border: 1px solid var(--red3) ;   
+    border-radius: var(--radius-lg);
+    height: fit-content;
+    width: fit-content;
+    padding: var(--space-4);
+}
+
+.button {
+    color: var(--blue0);
+    font-weight: bold;
+    background-color: var(--blue2);
+    border-radius: var(--radius-md);
+    width: fit-content;
+    height: fit-content;
+    padding: var(--space-2) var(--space-4);
+    transition: background-color 0.15s;
+}
+
+.button:hover { background-color: var(--blue3); }
+.button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.link,
+.title{
+    color: var(--blue0);
+    font-weight: bold;
+}
+
+.link:hover{
+    color: var(--blue1);
+}
+
+.text{
+    color: var(--blue1);
+    font-weight: bold;
+}
+
+.input{
+    border: 1px solid var(--blue3);
+    border-radius: var(--radius-sm);
+    color: var(--blue0);
+    padding: var(--space-1) var(--space-2);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--blue0);
+  outline-offset: 0;
+}

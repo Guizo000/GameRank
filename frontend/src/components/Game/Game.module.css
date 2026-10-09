@@ -1,0 +1,7 @@
+.game{
+    min-width: 150px;
+}
+
+.formContainer{
+    padding-bottom: var(--space-4);
+}

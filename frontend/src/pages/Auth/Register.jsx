@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router";
-import { getDecodedJWT } from "../helpers/auth.js"
-import './style/Register.css'; 
+import { getDecodedJWT } from "../../helpers/auth.js"
+import styles from './Auth.module.css'
+import clsx from "clsx";
 
 export default function Register()
 {
@@ -96,17 +97,17 @@ export default function Register()
     };
 
     return(
-        <div className="register">
-            {error && <div className="register__error">{error}</div>}
+        <div className="center full-height gap6">
+            {error && <div className="center error-container">{error}</div>}
 
             
-            <form method="post" className="register__form" onSubmit={handleSubmit} noValidate>
-                <h2 className="register__title">Welcome</h2>
+            <form method="post" className={clsx("center container gap6", styles.authForm)} onSubmit={handleSubmit} noValidate>
+                <h2 className="title">Welcome</h2>
 
-                <div className="register__field">
-                    <label className="register__label" htmlFor="name"> Name: </label>
+                <div className="center input-container gap1">
+                    <label className={clsx("text", styles.authLabel)} htmlFor="name"> Name: </label>
                     <input
-                        className="register__input"
+                        className="input"
                         id="name"
                         type="text"
                         autoComplete="name"
@@ -116,10 +117,10 @@ export default function Register()
                     />
                 </div>
 
-                <div className="register__field">
-                    <label className="register__label" htmlFor="email"> Email: </label>
+                <div className="center input-container gap1">
+                    <label className={clsx("text", styles.authLabel)} htmlFor="email"> Email: </label>
                     <input 
-                        className="register__input"
+                        className="input"
                         id="email"
                         type="email"
                         autoComplete="email"
@@ -129,10 +130,10 @@ export default function Register()
                     />
                 </div>
 
-                <div className="register__field">
-                    <label className="register__label" htmlFor="password"> Password: </label>   
+                <div className="center input-container gap1">
+                    <label className={clsx("text", styles.authLabel)} htmlFor="password"> Password: </label>   
                     <input 
-                        className="register__input"
+                        className="input"
                         id="password"
                         type="password"
                         autoComplete="new-password"
@@ -142,12 +143,12 @@ export default function Register()
                     /> 
                 </div>                
 
-                <button className="register__submit" type="submit" disabled={isLoading}> 
+                <button className="button" type="submit" disabled={isLoading}> 
                     {isLoading? "Registering..." : "Register"} 
                 </button>
 
-                <p className="register__switch">
-                    Already registered? <Link to="/login" className="register__link">Log In</Link>
+                <p className="text">
+                    Already registered? <Link to="/login" className="link">Log In</Link>
                 </p>
 
             </form>
