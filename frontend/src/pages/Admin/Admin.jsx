@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
-import { getDecodedJWT } from "../helpers/auth";
-import { deleteGameById } from "../services/games";
-import GameForm from "../components/GameForm";
-import GameSearch from "../components/GameSearch"
-import "./style/Admin.css"
-
+import { getDecodedJWT } from "../../helpers/auth";
+import { deleteGameById } from "../../services/games";
+import GameForm from "../../components/Game/GameForm";
+import GameSearch from "../../components/Game/GameSearch"
+import styles from './Admin.module.css' 
+import clsx from "clsx";
 
 export default function Admin() 
 {
@@ -39,15 +39,15 @@ export default function Admin()
         {
             case "Add":
                 return (
-                    <div className="admin__content">
+                    <div>
                         <GameForm token={rawToken} mode="add"/>
                     </div>
                 );
 
             case "Delete":
                 return (
-                    <div className="admin__content">
-                        <h2>Delete Game</h2>
+                    <div className="center">
+                        <h2 className="title">Delete Game</h2>
                         <GameSearch token={rawToken} onSelectGame={handleDeleteGame}/>
                     </div>
                 );
@@ -55,13 +55,13 @@ export default function Admin()
             case "Update":
                 return (
                     selectedGame ? 
-                    <div className="admin__content">
+                    <div className="center">
                         <GameForm token={rawToken} gameId={selectedGame.id}/>
-                        <button onClick={() => setSelectedGame(null)}>Back</button>
+                        <button className={clsx("button", styles.backButton)} onClick={() => setSelectedGame(null)}>Back</button>
                     </div> 
                      :
-                    <div className="admin__content">
-                        <h2>Update Game</h2>
+                    <div className="center">
+                        <h2 className="title">Update Game</h2>
                         <GameSearch token={rawToken} onSelectGame={handleSelectGame}/>
                     </div>
                 );
@@ -72,13 +72,15 @@ export default function Admin()
     };
 
     return(
-        <div className="admin">
-            <h2 className="admin__header">Welcome {token.name}</h2>
-            <div className="admin__game-management">
-                <h3 className="admin__game-title">Game Management</h3>
-                <button className="admin__btn" onClick={() => { setAction("Add"); setSelectedGame(null); } }>Add</button>
-                <button className="admin__btn" onClick={() => { setAction("Delete"); setSelectedGame(null); }}>Delete</button>
-                <button className="admin__btn" onClick={() => { setAction("Update"); setSelectedGame(null); }}>Update</button>
+        <div className="start full-height gap12">
+            <div className={clsx("start gap6", styles.adminSection)}>
+                <h2 className="title">Welcome {token.name}</h2>
+                <div className={clsx("center container gap6", styles.adminOptions)}>
+                    <h3 className="title">Game Management</h3>
+                    <button className={clsx("button", styles.adminButton)} onClick={() => { setAction("Add"); setSelectedGame(null); } }>Add</button>
+                    <button className={clsx("button", styles.adminButton)} onClick={() => { setAction("Delete"); setSelectedGame(null); }}>Delete</button>
+                    <button className={clsx("button", styles.adminButton)} onClick={() => { setAction("Update"); setSelectedGame(null); }}>Update</button>
+                </div>
             </div>
 
             {renderActionContent()}    

@@ -1,0 +1,16 @@
+.adminSection {
+    margin-top: var(--space-12);
+}
+
+.adminOptions {
+    min-width: 250px;
+    min-height: 275px;
+}
+
+.adminButton {
+    min-width: 100px;
+}
+
+.backButton{
+    margin-bottom: var(--space-4);
+}

@@ -1,0 +1,32 @@
+:root{
+    /* Blue Palette */
+    --blue0: #58a0b0; 
+    --blue1: #76c0d1;
+    --blue2: #b8dee7 ;
+    --blue3: #cae6ed ;
+    --blue4: #dceff3 ;
+    --blue5: #edf7f9 ;
+
+    /* Red Palette */
+    --red0: #b05858; 
+    --red1:  #d17676; 
+    --red2:  #e7b8b8;
+    --red3:  #edcaca; 
+    --red4:  #f3dce0; 
+    --red5:  #f9eded; 
+
+    /* Spacing */
+    --space-1: 0.25rem; /* 4px  */
+    --space-2: 0.5rem;  /* 8px  */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem;    /* 16px */
+    --space-6: 1.5rem;  /* 24px */
+    --space-8: 2rem;    /* 32px */
+    --space-12: 3rem;   /* 48px */
+
+    /* Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-full: 9999px;
+}

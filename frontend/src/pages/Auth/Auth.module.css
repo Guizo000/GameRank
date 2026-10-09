@@ -1,0 +1,8 @@
+.authLabel {
+    align-self: flex-start;
+}
+
+.authForm{
+    min-width: 300px;
+    min-height: 400px;
+}
