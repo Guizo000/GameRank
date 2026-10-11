@@ -3,7 +3,7 @@ import { searchGame } from "../../services/games"
 import styles from "./Game.module.css"
 import clsx from "clsx";
 
-export default function UpdateGameForm({ token, onSelectGame }) {
+export default function GameSearch({ token, onSelectGame }) {
     const [query, setQuery] = useState("")
     const [results, setResults] = useState([])
 

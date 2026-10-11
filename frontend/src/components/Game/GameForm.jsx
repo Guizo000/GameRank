@@ -11,7 +11,7 @@ const initialFormState = {
     image: ""
 }
 
-export default function AddGameForm({ token, gameId })
+export default function GameForm({ token, gameId })
 {
     const isUpdating = Boolean(gameId);
 
