@@ -29,7 +29,8 @@
     transition: background-color 0.15s;
 }
 
-.button:hover { background-color: var(--blue3); }
+.button:active { transform: translate(1px, 1px); }
+.button:hover { background-color: var(--blue3); cursor: pointer}
 .button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .link,
