@@ -40,7 +40,7 @@ export default function Admin()
             case "Add":
                 return (
                     <div>
-                        <GameForm token={rawToken} mode="add"/>
+                        <GameForm key="game-form-add" token={rawToken} mode="add"/>
                     </div>
                 );
 
@@ -56,7 +56,7 @@ export default function Admin()
                 return (
                     selectedGame ? 
                     <div className="center">
-                        <GameForm token={rawToken} gameId={selectedGame.id}/>
+                        <GameForm key="game-form-update" token={rawToken} gameId={selectedGame.id}/>
                         <button className={clsx("button", styles.backButton)} onClick={() => setSelectedGame(null)}>Back</button>
                     </div> 
                      :
